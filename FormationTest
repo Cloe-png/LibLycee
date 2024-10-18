@@ -1,0 +1,76 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+public class FormationTest {
+
+    @Test
+    public void testAjoutEtudiant() {
+        Formation formation = new Formation("BTS SIO");
+        Etudiant etudiant = new Etudiant("Dupont", "Jean");
+
+        formation.ajouterEtudiant(etudiant);
+
+        List<Etudiant> etudiants = formation.getEtudiants();
+        assertEquals(1, etudiants.size());
+        assertEquals(etudiant, etudiants.get(0));
+
+
+        Etudiant etudiant2 = new Etudiant("Durand", "Paul");
+        formation.ajouterEtudiant(etudiant2);
+        etudiants = formation.getEtudiants();
+        assertEquals(2, etudiants.size());
+    }
+
+    @Test
+    public void testLesAdmis() {
+        Formation formation = new Formation("BTS SIO");
+        Etudiant etudiant1 = new Etudiant("Dupont", "Jean");
+        Matiere matiere = new Matiere("Maths");
+        etudiant1.ajouterEvaluation(new Evaluation(etudiant1, matiere, 12, 1)); // Admis
+
+        Etudiant etudiant2 = new Etudiant("Durand", "Paul");
+        etudiant2.ajouterEvaluation(new Evaluation(etudiant2, matiere, 8, 1)); // Non admis
+
+        formation.ajouterEtudiant(etudiant1);
+        formation.ajouterEtudiant(etudiant2);
+
+        List<Etudiant> admis = formation.lesAdmis();
+        assertEquals(1, admis.size());
+        assertEquals(etudiant1, admis.get(0));
+    }
+
+    @Test
+    public void testTriEtudiants() {
+        Formation formation = new Formation("BTS SIO");
+        Etudiant etudiant1 = new Etudiant("Dupont", "Jean");
+        Matiere matiere = new Matiere("Maths");
+        etudiant1.ajouterEvaluation(new Evaluation(etudiant1, matiere, 12, 1));
+
+        Etudiant etudiant2 = new Etudiant("Durand", "Paul");
+        etudiant2.ajouterEvaluation(new Evaluation(etudiant2, matiere, 14, 1));
+
+        formation.ajouterEtudiant(etudiant2);
+        formation.ajouterEtudiant(etudiant1);
+
+        formation.trierLesEtudiants();
+
+        List<Etudiant> etudiants = formation.getEtudiants();
+        assertEquals("Durand", etudiants.get(0).getNom());
+    }
+
+    @Test
+    public void testCalculMoyGene() {
+        Formation formation = new Formation("BTS SIO");
+        Etudiant etudiant = new Etudiant("Dupont", "Jean");
+        Matiere matiere = new Matiere("Maths");
+
+        etudiant.ajouterEvaluation(new Evaluation(etudiant, matiere, 10, 2));
+        etudiant.ajouterEvaluation(new Evaluation(etudiant, matiere, 15, 3));
+
+        formation.ajouterEtudiant(etudiant);
+
+        double moyenne = formation.calculerMoyenneGenerale();
+        assertEquals(13.0, moyenne, 0.01);
+    }
+}
