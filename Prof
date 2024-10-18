@@ -1,0 +1,31 @@
+import java.util.List;
+
+public class Prof extends Personne {
+    private String status;
+    private List<Enseignement> lesEnseignements;
+
+    public Prof(String nom, String prenom, String status) {
+        super(nom, prenom);
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<Enseignement> getLesEnseignements() {
+        return lesEnseignements;
+    }
+
+    public void setLesEnseignements(List<Enseignement> lesEnseignements) {
+        this.lesEnseignements = lesEnseignements;
+    }
+
+    public void ajouterEnseignement(Enseignement ens) {
+        lesEnseignements.add(ens);
+    }
+}
