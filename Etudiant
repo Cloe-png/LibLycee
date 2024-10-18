@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Etudiant extends Personne {
+    private List<Evaluation> lesEvaluations;
+
+    public Etudiant(String nom, String prenom) {
+        super(nom, prenom);
+        this.lesEvaluations = new ArrayList<>();
+    }
+
+    // Ajouter une évaluation
+    public void ajouterEvaluation(Evaluation eval) {
+        lesEvaluations.add(eval);
+    }
+
+
+    public double calculerMoyenne() {
+        double sommeNotes = 0;
+        int sommeCoeffs = 0;
+        for (Evaluation eval : lesEvaluations) {
+            sommeNotes += eval.getLaNote() * eval.getLeCoeff();
+            sommeCoeffs += eval.getLeCoeff();
+        }
+        return sommeCoeffs == 0 ? 0 : sommeNotes / sommeCoeffs;
+    }
+}
