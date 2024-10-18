@@ -1,0 +1,26 @@
+import java.util.List;
+
+public class Matiere {
+    private String nom;
+    private List<Prof> lesProfsHabilites;
+
+    public Matiere(String nom) {
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void ajouterProfHabilite(Prof prof) {
+        lesProfsHabilites.add(prof);
+    }
+
+    public List<Prof> getLesProfsHabilites() {
+        return lesProfsHabilites;
+    }
+}
