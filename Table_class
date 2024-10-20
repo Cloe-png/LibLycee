@@ -1,0 +1,38 @@
+Classe :
+
+Méthode de test
+
+Scénario à valider
+Formation :
+ajouterEtudiant
+
+testAjoutEtudiant
+    • Instancier une formation
+    • Créer un étudiant
+    • Insérer l’étudiant via la méthode
+    • Récupérer la liste d’étudiant et faire une assertion sur sa taille == 1
+    • Vérifier avec une assertion que l’objet récupéré en position 1 de la collection est le même que celui ajouté avec la méthode
+    • Tester avec un second étudiant pour valider que le code fonctionne avec plusieurs ajouts.
+Formation :
+lesAdmis
+
+testLesAdmis
+    • Instancier une formation
+    • Ajouter un étudiant avec une moyenne >= 10 (admis)
+    • Ajouter un étudiant avec une moyenne < 10 (non admis)
+    • Vérifier que la méthode retourne uniquement les étudiants admis 
+
+Formation :
+trierLesEtudiants
+
+testTriEtudiants
+    • Instancier une formation
+    • Ajouter plusieurs étudiants
+    • Les trier par ordre alphabétique ou par une autre règle et vérifier l'ordre de la liste après tri 
+Formation :
+calculerMoyenneGenerale
+
+testCalculMoyGene
+    • Instancier une formation
+    • Ajouter des étudiants avec différentes moyennes
+    • Calculer la moyenne générale de la formation et vérifier le résultat attendu 
